@@ -21,9 +21,9 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Ayomikun Bello — Research Fellow, Petroleum & Interfacial Science",
+  title: "Ayomikun Bello: Home",
   description:
-    "Ayomikun Bello is a Humboldt Postdoctoral Research Fellow at OVGU, working on microfluidics, interfacial science, and enhanced oil recovery. Research consultancy and admissions/scholarship guidance.",
+    "An optimistic, fast-learning and enthusiastic researcher, seeking to leverage 5+ years of proven experience in experimental research to collaborate, lead or work within project teams.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

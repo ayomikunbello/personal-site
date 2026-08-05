@@ -5,11 +5,8 @@ export default function Highlights() {
   return (
     <section className="bg-paper">
       <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-700">
-          Highlights
-        </p>
-        <h2 className="mt-3 font-serif text-3xl tracking-tight text-ink sm:text-4xl">
-          Recent updates
+        <h2 className="font-serif text-3xl tracking-tight text-ink sm:text-4xl">
+          Featured news
         </h2>
 
         <ul className="mt-10 space-y-6">

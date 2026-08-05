@@ -11,31 +11,20 @@ export default function Hero() {
 
       <div className="mx-auto grid max-w-5xl gap-12 px-6 py-20 sm:py-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-700">
-            {hero.eyebrow}
-          </p>
-
-          <h1 className="mt-5 font-serif text-4xl leading-[1.1] tracking-tight text-ink sm:text-5xl">
-            {hero.heading}
-          </h1>
-
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-ink/60 sm:text-lg">
-            {hero.subheading}
-          </p>
-
-          <p className="mt-4 max-w-xl text-sm text-ink/50">
-            Currently a{" "}
-            <span className="font-medium text-ink/80">{siteConfig.role}</span>{" "}
-            at{" "}
+          <h1 className="font-serif text-4xl leading-[1.1] tracking-tight text-ink sm:text-5xl">
+            Hello, I&rsquo;m Ayo, a {siteConfig.role} at{" "}
             <a
               href={siteConfig.institutionUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-violet-700 underline decoration-violet-300 underline-offset-4 hover:text-violet-800"
+              className="text-violet-700 underline decoration-violet-300 underline-offset-4 hover:text-violet-800"
             >
-              {siteConfig.institution}
+              {siteConfig.institution} in {siteConfig.location}
             </a>
-            , {siteConfig.location}.
+          </h1>
+
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-ink/60 sm:text-lg">
+            {hero.subheading}
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -44,12 +33,6 @@ export default function Hero() {
               className="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-violet-900"
             >
               {hero.primaryCta.label}
-            </Link>
-            <Link
-              href={hero.secondaryCta.href}
-              className="rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-ink/30 hover:bg-ink/5"
-            >
-              {hero.secondaryCta.label}
             </Link>
           </div>
         </div>

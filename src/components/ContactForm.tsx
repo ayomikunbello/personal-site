@@ -15,7 +15,7 @@ export default function ContactForm() {
   if (status === "submitted") {
     return (
       <p className="rounded-2xl border border-violet-200 bg-violet-50 px-5 py-4 text-sm text-violet-800">
-        Thanks — your message is noted. (Form isn't wired to the database yet — that's next.)
+        Thanks, your message is noted. (Form isn't wired to the database yet, that's next.)
       </p>
     );
   }

@@ -6,11 +6,8 @@ export default function Services() {
   return (
     <section className="bg-violet-50/60">
       <div className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-700">
-          How I can help
-        </p>
-        <h2 className="mt-3 font-serif text-3xl tracking-tight text-ink sm:text-4xl">
-          Consultancy services
+        <h2 className="font-serif text-3xl tracking-tight text-ink sm:text-4xl">
+          How can I help you?
         </h2>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-2">

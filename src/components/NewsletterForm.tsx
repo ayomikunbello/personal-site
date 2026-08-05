@@ -15,7 +15,7 @@ export default function NewsletterForm() {
   if (status === "submitted") {
     return (
       <p className="rounded-2xl border border-violet-200 bg-violet-50 px-5 py-4 text-sm text-violet-800">
-        Thanks for signing up! (Form isn't wired to a live list yet — that's next.)
+        Thanks for signing up! (Form isn't wired to a live list yet, that's next.)
       </p>
     );
   }

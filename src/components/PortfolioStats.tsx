@@ -6,19 +6,14 @@ export default function PortfolioStats() {
     <section className="bg-paper">
       <div className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-700">
-              Portfolio
-            </p>
-            <h2 className="mt-3 font-serif text-3xl tracking-tight text-ink sm:text-4xl">
-              Publications &amp; research output
-            </h2>
-          </div>
+          <h2 className="font-serif text-3xl tracking-tight text-ink sm:text-4xl">
+            Portfolio
+          </h2>
           <Link
             href="/portfolio"
             className="rounded-full border border-ink/15 px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-ink/30 hover:bg-ink/5"
           >
-            See full portfolio →
+            See more
           </Link>
         </div>
 
