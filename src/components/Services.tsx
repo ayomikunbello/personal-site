@@ -10,18 +10,18 @@ export default function Services() {
           How can I help you?
         </h2>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+        <div className="mt-10 space-y-6">
           {services.map((service) => (
             <div
               key={service.title}
-              className="flex flex-col overflow-hidden rounded-3xl border border-ink/10 bg-white"
+              className="flex flex-col overflow-hidden rounded-3xl border border-ink/10 bg-white sm:flex-row"
             >
-              <div className="relative aspect-[16/9] w-full">
+              <div className="relative aspect-[16/9] w-full shrink-0 sm:aspect-auto sm:w-2/5">
                 <Image
                   src={service.image}
                   alt={service.title}
                   fill
-                  sizes="(min-width: 1024px) 36rem, 90vw"
+                  sizes="(min-width: 640px) 24rem, 90vw"
                   className="object-cover"
                 />
               </div>

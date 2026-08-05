@@ -10,7 +10,7 @@ export default function ResearchInterests() {
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {researchInterests.heading}
           </h2>
-          <div className="mt-8 space-y-5 text-[15px] leading-relaxed text-white/70 sm:text-base">
+          <div className="mt-8 space-y-5 text-justify text-[15px] leading-relaxed text-white/70 sm:text-base">
             {researchInterests.paragraphs.map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
             ))}
