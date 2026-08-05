@@ -11,7 +11,7 @@ export default function Hero() {
 
       <div className="mx-auto grid max-w-5xl gap-12 px-6 py-20 sm:py-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
-          <h1 className="font-serif text-4xl leading-[1.1] tracking-tight text-ink sm:text-5xl">
+          <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight text-ink sm:text-5xl">
             Hello, I&rsquo;m Ayo, a {siteConfig.role} at{" "}
             <a
               href={siteConfig.institutionUrl}

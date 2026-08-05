@@ -6,7 +6,7 @@ export default function PortfolioStats() {
     <section className="bg-paper">
       <div className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-          <h2 className="font-serif text-3xl tracking-tight text-ink sm:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             Portfolio
           </h2>
           <Link
@@ -27,7 +27,7 @@ export default function PortfolioStats() {
               className="group rounded-3xl border border-ink/10 bg-white p-7 transition-colors hover:border-violet-300 hover:bg-violet-50/50"
             >
               <dt className="text-sm text-ink/50">{stat.label}</dt>
-              <dd className="mt-2 font-serif text-4xl text-ink transition-colors group-hover:text-violet-800">
+              <dd className="mt-2 text-4xl font-semibold text-ink transition-colors group-hover:text-violet-800">
                 {stat.value}
               </dd>
             </Link>

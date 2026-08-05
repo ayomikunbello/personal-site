@@ -6,7 +6,7 @@ export default function Services() {
   return (
     <section className="bg-violet-50/60">
       <div className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
-        <h2 className="font-serif text-3xl tracking-tight text-ink sm:text-4xl">
+        <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
           How can I help you?
         </h2>
 
@@ -26,7 +26,7 @@ export default function Services() {
                 />
               </div>
               <div className="flex flex-1 flex-col p-8">
-                <h3 className="font-serif text-xl text-ink">{service.title}</h3>
+                <h3 className="text-xl font-semibold text-ink">{service.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/60">{service.lede}</p>
                 <ul className="mt-5 space-y-3">
                   {service.bullets.map((bullet) => (

@@ -7,7 +7,7 @@ export default function ResearchInterests() {
     <section id="research" className="scroll-mt-24 bg-[#181121]">
       <div className="mx-auto grid max-w-5xl gap-10 px-6 py-16 sm:py-20 lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:gap-16">
         <div>
-          <h2 className="font-serif text-3xl tracking-tight text-white sm:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {researchInterests.heading}
           </h2>
           <div className="mt-8 space-y-5 text-[15px] leading-relaxed text-white/70 sm:text-base">
