@@ -115,6 +115,176 @@ export const highlights = [
   },
 ];
 
+// Full publication list, scraped verbatim from ayo-bello.com/portfolio.
+export const journalPublications = [
+  {
+    text: "Anastasia Ivanova, Ayomikun Bello, Alexander Rodionov, Yuanhao Chang, Hui Gao, Alexey Cheremisin (2026). Molecular Origins of Surfactant Synergy: Integrated Experiments and Simulations Reveal Interfacial Mechanisms for Enhanced CO2 Foam Performance. Journal of Molecular Liquids",
+    href: "https://doi.org/10.1016/j.molliq.2026.129712",
+  },
+  {
+    text: "Aysylu Askarova, Hamza Imran, Fernancelys Rodriguez, Hadi Belhaj, Desmond Dorhjie, Ayomikun Bello, Chengdong Yuan, Celia Bejarano, Raifel Morales, Alexey Cheremisin (2026). Multiscale Experimental-Numerical Study of Alkali-free SP Flooding with Sensitivity Analysis in a Venezuelan Extra-heavy Oil Reservoir. Fuel",
+    href: "https://doi.org/10.1016/j.fuel.2026.139258",
+  },
+  {
+    text: "Ayomikun Bello, Abdolreza Kharaghani, Evangelos Tsotsas (2026). Pore-Scale Influence of Surfactants on Evaporation in a Porous Medium. Scientific Reports",
+    href: "https://doi.org/10.1038/s41598-025-29925-z",
+  },
+  {
+    text: "Ayomikun Bello, Abdolreza Kharaghani, Evangelos Tsotsas (2025). Comparative Pore and Continuum-scale Modelling of Evaporation in Mixed Wettability Porous Media. Advances in Water Resources",
+    href: "https://doi.org/10.1016/j.advwatres.2025.105123",
+  },
+  {
+    text: "Ayomikun Bello, Anastasia Ivanova, Denis Bakulin, Kirill Maerle, Denis Davydov, Artem Penigin, Alexey Cheremisin (2025). Enhanced Carbon Utilization and Storage: An Application of Nonionic-based Binary Surfactant CO2 Foam. Heliyon",
+    href: "https://doi.org/10.1016/j.heliyon.2025.e42561",
+  },
+  {
+    text: "Ayomikun Bello, Anastasia Ivanova, Alexander Rodionov, Tagir Karamov, Andrey Morkovkin, Alexey Cheremisin (2025). An Experimental Study of the Physical Mechanisms of Fluid Flow in Tight Carbonate Core Samples by Binary Surfactants. Heliyon",
+    href: "https://doi.org/10.1016/j.heliyon.2025.e42221",
+  },
+  {
+    text: "Sukhwant Pal, Ayomikun Bello, Elvira Muratova, Alexander Chekanov (2024). A Review of the Materials Utilized in the Design and Fabrication of Biogas Digesters. Renewable and Sustainable Energy Reviews",
+    href: "https://doi.org/10.1016/j.rser.2024.115167",
+  },
+  {
+    text: "Ayomikun Bello, Desmond Batsa Dorhjie, Anastasia Ivanova, Alexey Cheremisin (2024). A Numerical Feasibility Study of CO2 Foam for Carbon Utilization and Storage in a Depleted, High Salinity, Carbonate Oil Reservoir. Scientific Reports",
+    href: "https://doi.org/10.1038/s41598-024-70122-1",
+  },
+  {
+    text: "Ayomikun Bello, Anastasia Ivanova, Denis Bakulin, Timur Yunusov, Alexey Cheremisin (2024). A Static and Dynamic Analysis of Nonionic-based Binary Surfactant Systems for Adsorption Mitigation in a Carbonate Reservoir with High Salinity. Journal of Molecular Liquids",
+    href: "https://doi.org/10.1016/j.molliq.2024.125141",
+  },
+  {
+    text: "Ayomikun Bello, Anastasia Ivanova, Denis Bakulin, Timur Yunusov, Alexander Rodionov, Alexander Burukhin, Alexey Cheremisin (2024). An Experimental Study of Foam-Oil Interactions for Nonionic-based Binary Surfactant Systems under High Salinity Conditions. Scientific Reports",
+    href: "https://doi.org/10.1038/s41598-024-62610-1",
+  },
+  {
+    text: "Ayomikun Bello, Desmond Batsa Dorhjie, Anastasia Ivanova, Alexander Cheremisin, Alexey Cheremisin, Ilnur Ilyasov (2024). Numerical Study of the Mechanisms of Nano-assisted Foam Flooding in Porous Media as an Alternative to Gas Flooding. Heliyon",
+    href: "https://doi.org/10.1016/j.heliyon.2024.e26689",
+  },
+  {
+    text: "Ivanova A. A., Kozyreva Z.V., Chekalov A.Y., Proshin P.I., Abdurashitov A.S., Bello A.S., Markovic S., Sukhorukov G.B., Cheremisin A.N. (2024). Development and characterization of nanostructured surfactant compositions with prolonged action and stimuli-responsible physicochemical properties. Colloids and Surfaces A: Physicochemical and Engineering Aspects",
+    href: "https://doi.org/10.1016/j.colsurfa.2024.133396",
+  },
+  {
+    text: "Ayomikun Bello, Desmond Batsa Dorhjie, Anastasia Ivanova, Alexey Cheremisin (2023). Numerical Sensitivity Analysis of CO2 Mineralization Trapping Mechanisms in a Deep Saline Aquifer. Journal of Chemical Engineering Science",
+    href: "https://doi.org/10.1016/j.ces.2023.119335",
+  },
+  {
+    text: "Ayomikun Bello, Anastasia Ivanova, Alexander Rodionov, Timur Aminev, Alexander Mishin, Denis Bakulin, Pavel Grishin, Pavel Belovus, Artem Penigin, Konstantin Kyzyma, Alexey Cheremisin (2023). An Experimental Study of High Pressure Microscopy and Enhanced Oil Recovery with Nanoparticle-Stabilized Foams in Carbonate Oil Reservoir. Energies",
+    href: "https://doi.org/10.3390/en16135120",
+  },
+  {
+    text: "Ayomikun Bello, Anastasia Ivanova, Alexey Cheremisin (2023). A Comprehensive Review of the Role of CO2 Foam EOR in the Reduction of Carbon Footprint in the Petroleum Industry. Energies",
+    href: "https://doi.org/10.3390/en16031167",
+  },
+  {
+    text: "Ayomikun Bello, Anastasia Ivanova, Alexey Cheremisin (2023). Foam EOR as an Optimization Technique for Gas EOR: A Comprehensive Review of Laboratory and Field Implementations. Energies",
+    href: "https://doi.org/10.3390/en16020972",
+  },
+  {
+    text: "Ayomikun Bello, Anastasia Ivanova, Alexey Cheremisin (2022). Enhancing N2 and CO2 Foam Stability by Surfactants and Nanoparticles at High Temperature and Various Salinities. Journal of Petroleum Science and Engineering",
+    href: "https://doi.org/10.1016/j.petrol.2022.110720",
+  },
+  {
+    text: "Ayomikun Bello, Joy Ozoani, Adewale Adebayo, Dmitriy Kuriashov (2022). Rheological Study of Nanoparticle-based Cationic Surfactant Solutions. Journal of Petroleum",
+    href: "https://doi.org/10.1016/j.petlm.2022.01.003",
+  },
+  {
+    text: "Ayomikun Bello, Joy Ozoani, Dmitriy Kuriashov (2021). Proppant Transport in Hydraulic Fractures by Creating a Capillary Suspension. Journal of Petroleum Science and Engineering",
+    href: "https://doi.org/10.1016/j.petrol.2021.109508",
+  },
+];
+
+export const conferenceProceedings = [
+  {
+    text: "Ayomikun Bello (2025). A Numerical Study of CO2 Foams for Carbon Utilization and Storage. World CCUS Conference 2025, Bergen, Norway, 1 - 4 September, 2025.",
+    href: "https://doi.org/10.3997/2214-4609.202522128",
+  },
+  {
+    text: "Ayomikun Bello, Desmond B. Dorhjie, Anastasia Ivanova, Alexey Cheremisin (2025). Experimental and Numerical Simulation of Binary Surfactant Foam for the Co-Optimization of the Methods of Oil Recovery and CO2 Storage. SPE/AAPG/SEG Unconventional Resources Technology Conference, Houston, Texas, USA, 9 - 11 June, 2025.",
+    href: "https://doi.org/10.15530/urtec-2025-4208589",
+  },
+  {
+    text: "Ayomikun Bello, Desmond B. Dorhjie, Anastasia Ivanova, Alexey Cheremisin (2025). Experimental and Numerical Simulation of Foam for Co-optimizing the Methods of Oil Recovery and CO2 Storage. 86th EAGE Annual Conference & Exhibition, Toulouse, France, 2 - 5 June, 2025.",
+    href: "https://doi.org/10.3997/2214-4609.202510014",
+  },
+  {
+    text: "H. Belhaj, F. Rodriguez, A. Bello, R. Morales, A. Askarova, D. Dorhjie, C. Bejarano, F. Alhameli, M. AlDhuhoori, A. Cheremisin (2024). A Hybrid Scheme for the Sustainable Production of High Water Cut Unconventional Extra-Heavy Oil Reservoirs: First Simulation Predictions for the Orinoco Oil Belt-Venezuela Shows Hope! Paper presented at Abu Dhabi International Petroleum Exhibition & Conference (ADIPEC), Abu Dhabi, UAE, 4 - 7 November, 2024.",
+    href: "https://doi.org/10.2118/222085-MS",
+  },
+  {
+    text: "Ayomikun Bello, Anastasia Ivanova, Desmond Batsa Dorhjie, Alexey Cheremisin (2024). Numerical Analysis of Foam-Assisted and Continuous CO2 Injection for Utilization and Storage in an Oil Reservoir. Paper presented at the Fifth EAGE Global Energy Transition Conference & Exhibition, Rotterdam, Netherlands, 4 - 7 November, 2024.",
+    href: "https://doi.org/10.3997/2214-4609.202421010",
+  },
+  {
+    text: "Ayomikun Bello, Anastasia Ivanova, Denis Bakulin, Alexey Cheremisin (2024). Mechanistic Study of the Interactions between Oil and CO2 Foam Generated with Binary Surfactants. Paper presented at the 85th EAGE Annual Conference & Exhibition, Oslo, Norway, 10 - 13 June, 2024.",
+    href: "https://doi.org/10.3997/2214-4609.202410233",
+  },
+  {
+    text: "Ayomikun Bello, Anastasia Ivanova, Alexey Cheremisin (2024). Application of Binary Surfactant Systems as Adsorption Reducers in a Carbonate Formation. Paper presented at the First EAGE Workshop on Advances in Carbonate Reservoirs from Prospects to Development, Kuwait City, Kuwait, 23 – 25 April, 2024.",
+    href: "https://doi.org/10.3997/2214-4609.2024634008",
+  },
+  {
+    text: "Ayomikun Bello, Alexander Rodionov, Anastasia Ivanova, Alexey Cheremisin (2024). Synergistic Effects of Binary Surfactant Systems for Enhanced Oil Recovery in Carbonates. Paper presented at SPE Improved Oil Recovery Conference, Tulsa, Oklahoma, USA, 22 – 25 April, 2024.",
+    href: "https://doi.org/10.2118/218271-MS",
+  },
+  {
+    text: "Ayomikun Bello, Anastasia Ivanova, Alexander Rodionov, Alexey Cheremisin (2023). Mechanistic Study of the Prospects of Binary Surfactant Systems in Carbonate Formations. Paper presented at Latin America Unconventional Resources Technology Conference, Buenos Aires, Argentina, 4 – 6 December, 2023.",
+    href: "https://onepetro.org/urtecla/proceedings-abstract/23JLAU/All-23JLAU/538824",
+  },
+  {
+    text: "Ayomikun Bello (2023). Synergistic Influence Between Surfactants and Nanoparticles in Foam Flooding as an Optimization Method for Gas EOR. Paper presented at the SPE Annual Technical Conference and Exhibition, San Antonio, Texas, 23 - 25 December, 2023.",
+    href: "https://doi.org/10.2118/217481-STU",
+  },
+  {
+    text: "Ayomikun Bello, Desmond Batsa Dorhjie, Anastasia Ivanova, Alexey Cheremisin (2023). A Numerical Study of the Influence of Rock Mineralization on CO2 Storage. Paper presented at Gas & Oil Technology Showcase and Conference, Dubai, 13 – 15 March, 2023.",
+    href: "https://doi.org/10.2118/214045-MS",
+  },
+  {
+    text: "Ayomikun Bello, Desmond Batsa Dorhjie, Anastasia Ivanova, Alexander Cheremisin, Alexey Cheremisin, Ilnur Ilyasov (2023). Reservoir Modelling Of Nanoparticle-Assisted Foam To Optimize Gas Injection In An Unconsolidated Heavy Oilfield. Paper presented at Gas & Oil Technology Showcase and Conference, Dubai, 13 – 15 March, 2023.",
+    href: "https://doi.org/10.2118/214161-MS",
+  },
+  {
+    text: "Ayomikun Bello, Anastasia Ivanova, Alexey Cheremisin (2022). Application of Nanoparticles in Foam Flooding for Enhanced Oil Recovery and Foam Stability in Carbonate Reservoirs. Paper presented at the 83rd EAGE Annual Conference & Exhibition, Madrid, 6 - 9 June, 2022.",
+    href: "https://doi.org/10.3997/2214-4609.202210009",
+  },
+  {
+    text: "Ayomikun Bello (2021). Proppant Transport in Hydraulic Fractures by Creating a Capillary Suspension. Paper presented at the SPE Annual Technical Conference and Exhibition, Dubai, 21 - 23 September, 2021.",
+    href: "https://doi.org/10.2118/208624-STU",
+  },
+  {
+    text: 'A. S. Bello, Optimal Management of Topside Diluent Injection for Heavy Oil Field. 73rd International youth scientific conference "Oil and gas – 2019" - Moscow, Publishing center of the Russian state University of Oil and Gas (National Research University) named after I. M. Gubkin, 2019 ISBN 978-5-91961-300-8',
+    href: null as string | null,
+  },
+];
+
+export const researchProjects = [
+  "Interfacial properties and their role in evaporation dynamics in porous media",
+  "Design and Development of Binary surfactant systems for combined purposes of EOR and CO2 storage",
+  "Nanofoam Design for Enhanced Oil Recovery in Orenburg oilfield",
+  "Microfluidic Study of the Influence of Nanofluids in Improving Flow-back during Hydraulic Fracturing",
+  "Numerical Simulation of Nanofoam Flooding as an Optimization Technique for Gas EOR",
+  "Influence of Nanoparticles on the Stability of Bulk Foams for Enhanced Oil Recovery",
+  "Ionic Liquids as Inhibitors for Gas Hydrates",
+  "Application of Thermal EOR methods for Usinskoye Oil Field",
+  "Experimental Study of Diesel-based Foam Stability",
+  "Proppant Transport in Hydraulic Fractures by Creating a Capillary Suspension",
+];
+
+export const phdDefense = {
+  heading: "Ayomikun Bello's PhD Defense",
+  topic:
+    "Co-optimization of the methods of oil recovery and CO2 storage using nonionic-based binary surfactant foams",
+  day: "Monday",
+  date: "December 9, 2024",
+  time: "15:00",
+  venue:
+    "Skolkovo Institute of Science and Technology, 30, Bolshoi Boulevard, bld. 1, Room E-A2-2007 and E-A2-2008",
+  materialsNote:
+    "Full information on the defense jury composition and the materials of the defense is available at Skoltech web site",
+  defenseUrl: "https://new.skoltech.ru/en/applicants/ayomikun-bello-sunday",
+};
+
 export const newsletter = {
   heading: "Sign up for my newsletter",
   body: "If you are in science and/or academia, or simply have an interest, I invite you to subscribe to my newsletter. Once a month, I'll drop you an email with what I am up to and share a few of the things I've learnt.",
