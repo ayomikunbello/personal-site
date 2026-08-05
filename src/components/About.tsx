@@ -4,14 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import { about, siteConfig } from "@/lib/data";
 
-const COLLAPSED_COUNT = 2;
-
 export default function About() {
   const [expanded, setExpanded] = useState(false);
-  const visibleParagraphs = expanded
-    ? about.paragraphs
-    : about.paragraphs.slice(0, COLLAPSED_COUNT);
-  const hasMore = about.paragraphs.length > COLLAPSED_COUNT;
+  const [firstParagraph, ...restParagraphs] = about.paragraphs;
 
   return (
     <section className="bg-paper">
@@ -33,20 +28,41 @@ export default function About() {
           <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             {about.heading}
           </h2>
-          <div className="mt-8 space-y-5 text-justify text-[15px] leading-relaxed text-ink/70 sm:text-base">
-            {visibleParagraphs.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
-            ))}
-          </div>
-          {hasMore && (
-            <button
-              type="button"
-              onClick={() => setExpanded((v) => !v)}
-              className="mt-5 text-sm font-semibold text-violet-700 hover:text-violet-900"
+          <div className="mt-8 text-justify text-[15px] leading-relaxed text-ink/70 sm:text-base">
+            <p>{firstParagraph}</p>
+
+            <div
+              className={`grid transition-[grid-template-rows] duration-500 ease-in-out ${
+                expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+              }`}
             >
-              {expanded ? "Read less" : "Read more"}
-            </button>
-          )}
+              <div className="space-y-5 overflow-hidden">
+                <div className="pt-5">
+                  {restParagraphs.map((paragraph, i) => (
+                    <p key={i} className="mb-5 last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => setExpanded((v) => !v)}
+            className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-4 py-2 text-sm font-semibold text-violet-700 transition-colors hover:border-violet-300 hover:bg-violet-100"
+          >
+            {expanded ? "Read less" : "Read more"}
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className={`h-3.5 w-3.5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
+            >
+              <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>
