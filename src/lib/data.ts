@@ -6,6 +6,7 @@ export const siteConfig = {
   name: "Ayomikun Bello",
   shortName: "Ayo Bello",
   monogram: "AB",
+  logo: "/images/logo.png",
   role: "Humboldt Postdoctoral Research Fellow",
   institution: "OVGU",
   institutionUrl: "https://www.ovgu.de",
@@ -32,12 +33,14 @@ export const hero = {
   heading: "Hi, I’m Ayo — researcher, founder, and eternal scholarship applicant.",
   subheading:
     "An optimistic, fast-learning and enthusiastic researcher, seeking to leverage 5+ years of proven experience in experimental research to collaborate, lead, and work within project teams.",
+  image: "/images/hero.png",
   primaryCta: { label: "Get in touch", href: "/#contact" },
   secondaryCta: { label: "View portfolio", href: "/portfolio" },
 };
 
 export const about = {
   heading: "About me",
+  image: "/images/about.jpg",
   paragraphs: [
     `I am a research scientist with over 5 years of research experience in the field of petroleum engineering. My research has been focused on developing and exploring "green novel" methods to improve oil recovery. Recently, my interest expanded to CO₂ sequestration, where I investigate the application of these methods and formulate chemicals for the dual purpose of CO₂ storage and enhanced oil recovery. During these years, I also got interested in entrepreneurship, and in 2022, I co-founded a startup, Eco Energy LLC, registered as a legal entity in Moscow, specializing in the production of smart biogas containers for the recycling of organic wastes.`,
     `Since mid-high school, I have not paid a dime for tuition, thus I have received academic funding worth over $425,000 through fellowships, scholarships, and awards, resulting in the publication of 19 journal publications and 15+ conference proceedings. I was a recipient of the Nigeria-Russia Bilateral Education Agreement scholarship in 2015, pursuing my bachelor's degree in Petroleum Engineering at Kazan National Research Technological University, where I also served as president of the SPE student chapter. In 2020, I received the special state award of the Tatarstan Republic for outstanding abilities in educational and scientific activities in the republic, after which I began my Master's at Skoltech.`,
@@ -49,6 +52,7 @@ export const about = {
 
 export const researchInterests = {
   heading: "Research interests",
+  image: "/images/research.jpg",
   paragraphs: [
     `My research interests include microfluidics, interfacial science, and fluid mechanics, with a particular focus on multiphase flow in porous media — especially how these areas apply to evaporation phenomena and enhanced oil recovery.`,
     `Previously, I worked on the design and optimization of binary surfactant systems capable of generating stable foams in depleted oil reservoirs, aiming to improve oil recovery while simultaneously enabling CO₂ sequestration.`,
@@ -66,6 +70,7 @@ export const portfolioStats = [
 export const services = [
   {
     title: "Research consultancy (STEM)",
+    image: "/images/help-research.png",
     lede: `I've contributed to 15+ publications in top-tier journals over the past 3 years, with 300+ citations. If you're looking for expert guidance on publishing a research paper, I can help with:`,
     bullets: [
       "Proofreading and editing your draft manuscript for clarity, coherence, and correctness.",
@@ -75,6 +80,7 @@ export const services = [
   },
   {
     title: "Admissions & scholarship consultancy",
+    image: "/images/help-admissions.png",
     lede: `I've paid $0 in tuition since mid-high school, and have helped 20+ people secure admissions and/or scholarships in the last 2 years. I can help you find the best way to pursue your education abroad with customized consultations on:`,
     bullets: [
       "Professional guidance and tips to boost your chances of success.",
@@ -91,15 +97,18 @@ export const highlights = [
     date: "22 November, 2023",
     text: "Winners of the SPE Regional Student Paper Contest — this group will represent the region at the international SPC at ATCE next year!",
     href: "https://student.skoltech.ru/ayomikunbello",
+    image: "/images/news-spe-winners.jpeg",
   },
   {
     date: "18 October, 2022",
     text: "Meet Ayomikun Bello, 2022 MSc graduate and PhD-1 in Petroleum Engineering, CTO at startup Eco-Energy, and research intern at Skoltech.",
     href: "https://www.linkedin.com/posts/slavik-orlova_spe-spc-atce-activity-6988101435624148992-49Jb",
+    image: "/images/news-truestory.png",
   },
   {
     date: "12 October, 2022",
     text: "Numerical Sensitivity Analysis of CO₂ Mineralization Trapping Mechanisms in a Deep Saline Aquifer, with Desmond Dorhjie, Anastasia Ivanova, and Alexey Cheremisin.",
     href: "https://www.linkedin.com/posts/chemical-engineering-science-5649a4243_numerical-sensitivity-analysis-of-co2-mineralization-activity-7116374224033726464-FgC9",
+    image: "/images/news-ces-linkedin.png",
   },
 ];

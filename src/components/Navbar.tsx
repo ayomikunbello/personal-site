@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { nav, siteConfig } from "@/lib/data";
 
@@ -32,12 +33,16 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 px-4 pt-4 sm:px-6">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 rounded-full border border-white/10 bg-[#181121]/95 px-4 py-2.5 shadow-lg shadow-violet-950/20 backdrop-blur">
-        <Link href="/" className="flex shrink-0 items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-600 text-sm font-bold text-white">
-            {siteConfig.monogram}
-          </span>
-          <span className="hidden text-sm font-semibold tracking-tight text-white sm:block">
-            {siteConfig.shortName}
+        <Link href="/" className="flex shrink-0 items-center">
+          <span className="flex h-10 items-center rounded-xl bg-white px-2.5 py-1.5">
+            <Image
+              src={siteConfig.logo}
+              alt={siteConfig.name}
+              width={140}
+              height={48}
+              className="h-7 w-auto object-contain"
+              priority
+            />
           </span>
         </Link>
 

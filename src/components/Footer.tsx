@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { nav, siteConfig } from "@/lib/data";
 
 export default function Footer() {
@@ -7,12 +8,15 @@ export default function Footer() {
       <div className="mx-auto max-w-5xl px-6 py-14">
         <div className="grid gap-10 sm:grid-cols-3">
           <div>
-            <Link href="/" className="flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-600 text-sm font-bold text-white">
-                {siteConfig.monogram}
-              </span>
-              <span className="text-sm font-semibold tracking-tight text-white">
-                {siteConfig.shortName}
+            <Link href="/" className="flex items-center">
+              <span className="flex h-10 items-center rounded-xl bg-white px-2.5 py-1.5">
+                <Image
+                  src={siteConfig.logo}
+                  alt={siteConfig.name}
+                  width={140}
+                  height={48}
+                  className="h-7 w-auto object-contain"
+                />
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/50">

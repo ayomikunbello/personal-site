@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { hero, siteConfig } from "@/lib/data";
 
 export default function Hero() {
@@ -53,12 +54,17 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto aspect-square w-full max-w-sm">
-          <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-violet-600 via-violet-700 to-fuchsia-800 shadow-xl shadow-violet-950/20" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="font-serif text-8xl font-medium text-white/95">
-              {siteConfig.monogram}
-            </span>
+        <div className="relative mx-auto aspect-[4/5] w-full max-w-sm">
+          <div className="absolute -inset-2 -z-10 rounded-[2.5rem] bg-gradient-to-br from-violet-400 via-fuchsia-400 to-violet-600 opacity-60 blur-xl" />
+          <div className="relative h-full w-full overflow-hidden rounded-[2.5rem] shadow-xl shadow-violet-950/20">
+            <Image
+              src={hero.image}
+              alt={siteConfig.name}
+              fill
+              sizes="(min-width: 1024px) 24rem, 90vw"
+              className="object-cover"
+              priority
+            />
           </div>
           <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-2xl border border-white/40 bg-white/70 backdrop-blur sm:h-28 sm:w-28" />
         </div>
