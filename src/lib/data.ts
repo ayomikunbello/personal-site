@@ -283,6 +283,11 @@ export const phdDefense = {
   materialsNote:
     "Full information on the defense jury composition and the materials of the defense is available at Skoltech web site",
   defenseUrl: "https://new.skoltech.ru/en/applicants/ayomikun-bello-sunday",
+  heroImage: "/images/phd-defense-hero.jpg",
+  gallery: Array.from(
+    { length: 10 },
+    (_, i) => `/images/phd-defense-gallery-${i + 1}.jpg`
+  ),
 };
 
 export const newsletter = {
