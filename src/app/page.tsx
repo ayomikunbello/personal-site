@@ -6,16 +6,24 @@ import Services from "@/components/Services";
 import Highlights from "@/components/Highlights";
 import Newsletter from "@/components/Newsletter";
 import Contact from "@/components/Contact";
+import { getHeroSubheading, getAboutParagraphs, getResearchParagraphs, getHighlights } from "@/lib/queries";
 
-export default function Home() {
+export default async function Home() {
+  const [subheading, aboutParagraphs, researchParagraphs, highlights] = await Promise.all([
+    getHeroSubheading(),
+    getAboutParagraphs(),
+    getResearchParagraphs(),
+    getHighlights(),
+  ]);
+
   return (
     <>
-      <Hero />
-      <About />
-      <ResearchInterests />
+      <Hero subheading={subheading} />
+      <About paragraphs={aboutParagraphs} />
+      <ResearchInterests paragraphs={researchParagraphs} />
       <PortfolioStats />
       <Services />
-      <Highlights />
+      <Highlights items={highlights} />
       <Newsletter />
       <Contact />
     </>

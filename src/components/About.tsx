@@ -4,9 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import { about, siteConfig } from "@/lib/data";
 
-export default function About() {
+export default function About({ paragraphs }: { paragraphs: string[] }) {
   const [expanded, setExpanded] = useState(false);
-  const [firstParagraph, ...restParagraphs] = about.paragraphs;
+  const [firstParagraph, ...restParagraphs] = paragraphs;
 
   return (
     <section className="bg-paper">

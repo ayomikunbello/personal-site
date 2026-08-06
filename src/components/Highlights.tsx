@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { highlights } from "@/lib/data";
+import type { Highlight } from "@/lib/queries";
 
-export default function Highlights() {
+export default function Highlights({ items }: { items: Highlight[] }) {
   return (
     <section className="bg-paper">
       <div className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
@@ -10,23 +10,25 @@ export default function Highlights() {
         </h2>
 
         <ul className="mt-10 grid gap-6 sm:grid-cols-3">
-          {highlights.map((item) => (
+          {items.map((item) => (
             <li
-              key={item.text}
+              key={item.id}
               className="flex flex-col overflow-hidden rounded-3xl border border-ink/10 bg-white"
             >
-              <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden">
-                <Image
-                  src={item.image}
-                  alt={item.text}
-                  fill
-                  sizes="(min-width: 640px) 20rem, 100vw"
-                  className="object-cover"
-                />
-              </div>
+              {item.image_url && (
+                <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden">
+                  <Image
+                    src={item.image_url}
+                    alt={item.text}
+                    fill
+                    sizes="(min-width: 640px) 20rem, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              )}
               <div className="flex flex-1 flex-col p-5">
                 <p className="text-xs font-medium uppercase tracking-wide text-ink/40">
-                  {item.date}
+                  {item.date_label}
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75">{item.text}</p>
                 {item.href && (

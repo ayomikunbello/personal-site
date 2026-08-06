@@ -1,27 +1,32 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useState, useTransition } from "react";
+import { submitContact } from "@/app/actions/public";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitted">("idle");
+  const [error, setError] = useState<string | null>(null);
+  const [pending, startTransition] = useTransition();
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    // TODO: once Supabase is wired up, POST to /api/contact
-    // (insert into `contact_messages` table, visible later in the admin dashboard).
-    setStatus("submitted");
+  function handleSubmit(formData: FormData) {
+    setError(null);
+    startTransition(async () => {
+      const res = await submitContact(formData);
+      if (res.error) setError(res.error);
+      else setStatus("submitted");
+    });
   }
 
   if (status === "submitted") {
     return (
       <p className="rounded-2xl border border-violet-200 bg-violet-50 px-5 py-4 text-sm text-violet-800">
-        Thanks, your message is noted. (Form isn't wired to the database yet, that's next.)
+        Thanks, your message is noted. I&rsquo;ll respond as soon as I can.
       </p>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form action={handleSubmit} className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
         <input
           type="text"
@@ -47,10 +52,12 @@ export default function ContactForm() {
       />
       <button
         type="submit"
-        className="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-violet-900"
+        disabled={pending}
+        className="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-violet-900 disabled:opacity-60"
       >
-        Send
+        {pending ? "Sending…" : "Send"}
       </button>
+      {error && <p className="text-sm text-red-700">{error}</p>}
     </form>
   );
 }

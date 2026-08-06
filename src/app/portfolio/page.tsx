@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
 import AccordionSection from "@/components/AccordionSection";
 import HighlightName from "@/components/HighlightName";
-import { journalPublications, conferenceProceedings, researchProjects } from "@/lib/data";
+import { getPublications } from "@/lib/queries";
 
 export const metadata: Metadata = {
   title: "Ayomikun Bello: Portfolio",
   description: "Journal publications, conference proceedings, and research projects.",
 };
 
-export default function PortfolioPage() {
+export default async function PortfolioPage() {
+  const [journalPublications, conferenceProceedings, researchProjects] = await Promise.all([
+    getPublications("journal"),
+    getPublications("conference"),
+    getPublications("project"),
+  ]);
+
   return (
     <div className="bg-paper">
       <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
@@ -18,7 +24,7 @@ export default function PortfolioPage() {
           <AccordionSection title="Journal Publications" count={journalPublications.length} defaultOpen>
             <ul className="space-y-5">
               {journalPublications.map((pub) => (
-                <li key={pub.href} className="text-[15px] leading-relaxed text-ink/70">
+                <li key={pub.id} className="text-[15px] leading-relaxed text-ink/70">
                   <HighlightName text={pub.text} />
                   {pub.href && (
                     <>
@@ -41,7 +47,7 @@ export default function PortfolioPage() {
           <AccordionSection title="Conference Proceedings" count={conferenceProceedings.length}>
             <ul className="space-y-5">
               {conferenceProceedings.map((pub) => (
-                <li key={pub.text} className="text-[15px] leading-relaxed text-ink/70">
+                <li key={pub.id} className="text-[15px] leading-relaxed text-ink/70">
                   <HighlightName text={pub.text} />
                   {pub.href && (
                     <>
@@ -64,9 +70,9 @@ export default function PortfolioPage() {
           <AccordionSection title="Research Projects" count={researchProjects.length}>
             <ul className="space-y-3">
               {researchProjects.map((project) => (
-                <li key={project} className="flex gap-3 text-[15px] leading-relaxed text-ink/70">
+                <li key={project.id} className="flex gap-3 text-[15px] leading-relaxed text-ink/70">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-500" />
-                  {project}
+                  {project.text}
                 </li>
               ))}
             </ul>

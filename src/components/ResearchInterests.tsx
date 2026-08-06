@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { researchInterests, siteConfig } from "@/lib/data";
 
-export default function ResearchInterests() {
+export default function ResearchInterests({ paragraphs }: { paragraphs: string[] }) {
   return (
     <section id="research" className="scroll-mt-24 bg-[#181121]">
       <div className="mx-auto grid max-w-5xl gap-10 px-6 py-16 sm:py-20 lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:gap-16">
@@ -11,7 +11,7 @@ export default function ResearchInterests() {
             {researchInterests.heading}
           </h2>
           <div className="mt-8 space-y-5 text-justify text-[15px] leading-relaxed text-white/70 sm:text-base">
-            {researchInterests.paragraphs.map((paragraph, i) => (
+            {paragraphs.map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
             ))}
           </div>

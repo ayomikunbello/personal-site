@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { hero, siteConfig } from "@/lib/data";
 
-export default function Hero() {
+export default function Hero({ subheading }: { subheading: string }) {
   return (
     <section className="relative overflow-hidden bg-paper">
       <div className="pointer-events-none absolute inset-x-0 -top-40 -z-10 flex justify-center">
@@ -24,7 +24,7 @@ export default function Hero() {
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-ink/60 sm:text-lg">
-            {hero.subheading}
+            {subheading}
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
