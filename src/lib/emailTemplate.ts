@@ -13,6 +13,8 @@ export function renderNewsletterEmail({
   previewText?: string;
 }) {
   const year = new Date().getFullYear();
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://personal-site-chi-orpin.vercel.app";
+  const logoUrl = `${siteUrl}${siteConfig.logo}`;
 
   return `<!doctype html>
 <html>
@@ -31,11 +33,8 @@ export function renderNewsletterEmail({
         <td align="center">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background-color:#ffffff;border-radius:20px;overflow:hidden;">
             <tr>
-              <td style="padding:28px 32px 0 32px;">
-                <div style="display:inline-flex;align-items:center;gap:8px;">
-                  <span style="display:inline-block;width:32px;height:32px;border-radius:9999px;background:linear-gradient(135deg,#8b5cf6,#c026d3);color:#fff;font-weight:700;font-size:13px;line-height:32px;text-align:center;">${siteConfig.monogram}</span>
-                  <span style="font-weight:600;font-size:14px;color:#181121;">${siteConfig.shortName}</span>
-                </div>
+              <td style="padding:32px 32px 8px 32px;text-align:center;">
+                <img src="${logoUrl}" alt="${escapeHtml(siteConfig.name)}" width="120" style="display:inline-block;height:auto;max-width:120px;" />
               </td>
             </tr>
             <tr>
