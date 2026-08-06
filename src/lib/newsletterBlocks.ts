@@ -17,7 +17,7 @@ export function newBlock(type: Block["type"]): Block {
     case "paragraph":
       return { id, type, html: "<p>Write something…</p>", align: "left", fontSize: 15, color: "#3f3a4a" };
     case "image":
-      return { id, type, src: "", alt: "", align: "center", width: 100 };
+      return { id, type, src: "", alt: "", align: "center", width: 60 };
     case "button":
       return { id, type, label: "Click here", href: "https://", color: "#181121", align: "left" };
     case "divider":
@@ -53,9 +53,9 @@ function renderBlock(block: Block): string {
     case "paragraph":
       return `<div style="margin:0 0 12px;${alignStyle(block.align)}font-size:${block.fontSize}px;line-height:1.7;color:${block.color};">${block.html}</div>`;
     case "image": {
-      const img = `<img src="${block.src}" alt="${escapeAttr(block.alt)}" style="max-width:${block.width}%;border-radius:12px;display:inline-block;" />`;
+      const img = `<img src="${block.src}" alt="${escapeAttr(block.alt)}" width="${block.width}%" style="max-width:${block.width}%;width:${block.width}%;border-radius:12px;display:inline-block;" />`;
       const wrapped = block.link ? `<a href="${block.link}" target="_blank" rel="noopener noreferrer">${img}</a>` : img;
-      return `<div style="margin:0 0 12px;${alignStyle(block.align)}">${wrapped}</div>`;
+      return `<div style="margin:0 0 12px;width:100%;${alignStyle(block.align)}">${wrapped}</div>`;
     }
     case "button":
       return `<div style="margin:0 0 16px;${alignStyle(block.align)}"><a href="${block.href}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:${block.color};color:#ffffff;padding:12px 24px;border-radius:9999px;text-decoration:none;font-weight:600;font-size:14px;">${block.label}</a></div>`;

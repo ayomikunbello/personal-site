@@ -256,19 +256,21 @@ function BlockPreview({ block }: { block: Block }) {
           {block.text}
         </h2>
       );
-    case "image":
+    case "image": {
+      const justify = block.align === "left" ? "flex-start" : block.align === "right" ? "flex-end" : "center";
       return (
-        <div style={{ textAlign: block.align }}>
+        <div style={{ display: "flex", justifyContent: justify, width: "100%" }}>
           {block.src ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={block.src} alt={block.alt} style={{ maxWidth: `${block.width}%`, borderRadius: 12 }} />
+            <img src={block.src} alt={block.alt} style={{ width: `${block.width}%`, borderRadius: 12 }} />
           ) : (
-            <div className="flex h-32 items-center justify-center rounded-xl border border-dashed border-ink/20 text-sm text-ink/40">
+            <div className="flex h-32 w-full items-center justify-center rounded-xl border border-dashed border-ink/20 text-sm text-ink/40">
               No image yet — select this block to upload one
             </div>
           )}
         </div>
       );
+    }
     case "button":
       return (
         <div style={{ textAlign: block.align }}>
