@@ -1,26 +1,36 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import RichTextEditor from "@/components/admin/RichTextEditor";
+import BlockEditor from "@/components/admin/BlockEditor";
 import { renderNewsletterEmail } from "@/lib/emailTemplate";
+import { renderBlocksToHtml, newBlock, type Block } from "@/lib/newsletterBlocks";
 import { saveDraft, sendTest, sendOrSchedule } from "@/app/admin/(dashboard)/newsletter/actions";
 
+type Group = { id: string; name: string };
 type Draft = {
   subject?: string;
   preview_text?: string | null;
-  body_html?: string;
+  body_blocks?: Block[] | null;
+  group_id?: string | null;
 };
 
 export default function NewsletterComposer({
   subscriberCount,
+  groups,
   initialDraft,
 }: {
   subscriberCount: number;
+  groups: Group[];
   initialDraft?: Draft;
 }) {
   const [subject, setSubject] = useState(initialDraft?.subject ?? "");
   const [previewText, setPreviewText] = useState(initialDraft?.preview_text ?? "");
-  const [bodyHtml, setBodyHtml] = useState(initialDraft?.body_html ?? "");
+  const [blocks, setBlocks] = useState<Block[]>(
+    initialDraft?.body_blocks && initialDraft.body_blocks.length > 0
+      ? initialDraft.body_blocks
+      : [newBlock("headline"), newBlock("paragraph")]
+  );
+  const [groupId, setGroupId] = useState(initialDraft?.group_id ?? "");
   const [showPreview, setShowPreview] = useState(false);
   const [scheduleMode, setScheduleMode] = useState(false);
   const [scheduledAt, setScheduledAt] = useState("");
@@ -32,7 +42,8 @@ export default function NewsletterComposer({
     const fd = new FormData();
     fd.set("subject", subject);
     fd.set("previewText", previewText);
-    fd.set("bodyHtml", bodyHtml);
+    fd.set("blocks", JSON.stringify(blocks));
+    fd.set("groupId", groupId);
     return fd;
   }
 
@@ -58,9 +69,10 @@ export default function NewsletterComposer({
       setMessage({ type: "error", text: "Pick a date and time to schedule for." });
       return;
     }
+    const audience = groupId ? groups.find((g) => g.id === groupId)?.name : `all ${subscriberCount} subscribers`;
     const confirmMsg = scheduleMode
-      ? `Schedule "${subject}" for ${new Date(scheduledAt).toLocaleString()} to ${subscriberCount} subscriber(s)?`
-      : `Send "${subject}" now to ${subscriberCount} subscriber(s)?`;
+      ? `Schedule "${subject}" for ${new Date(scheduledAt).toLocaleString()} to ${audience}?`
+      : `Send "${subject}" now to ${audience}?`;
     if (!confirm(confirmMsg)) return;
 
     setMessage(null);
@@ -80,17 +92,17 @@ export default function NewsletterComposer({
         if (!res.scheduled) {
           setSubject("");
           setPreviewText("");
-          setBodyHtml("");
+          setBlocks([newBlock("headline"), newBlock("paragraph")]);
         }
       }
     });
   }
 
-  const previewHtml = renderNewsletterEmail({ bodyHtml, previewText });
+  const previewHtml = renderNewsletterEmail({ bodyHtml: renderBlocksToHtml(blocks, "Friend"), previewText });
 
   return (
     <div className="rounded-3xl border border-ink/10 bg-white p-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <h2 className="text-lg font-semibold text-ink">Compose</h2>
         <button
           type="button"
@@ -101,55 +113,75 @@ export default function NewsletterComposer({
         </button>
       </div>
 
-      {showPreview ? (
-        <div className="mt-5 overflow-hidden rounded-2xl border border-ink/10">
-          <div className="border-b border-ink/10 bg-ink/[0.03] px-4 py-2 text-xs text-ink/50">
-            Subject: <span className="font-medium text-ink">{subject || "(no subject)"}</span>
-            {previewText && (
-              <>
-                {" "}
-                &middot; Preview: <span className="font-medium text-ink">{previewText}</span>
-              </>
-            )}
-          </div>
-          <iframe title="Email preview" srcDoc={previewHtml} className="h-[520px] w-full bg-[#f4f2f9]" />
+      <div className="mt-5 grid gap-4 sm:grid-cols-2">
+        <div>
+          <label className="text-sm font-medium text-ink/70" htmlFor="subject">
+            Subject
+          </label>
+          <input
+            id="subject"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+            required
+            className="mt-1.5 w-full rounded-xl border border-ink/15 px-4 py-2.5 text-sm text-ink outline-none focus:border-violet-400"
+          />
         </div>
-      ) : (
-        <div className="mt-5 space-y-4">
-          <div>
-            <label className="text-sm font-medium text-ink/70" htmlFor="subject">
-              Subject
-            </label>
-            <input
-              id="subject"
-              value={subject}
-              onChange={(e) => setSubject(e.target.value)}
-              required
-              className="mt-1.5 w-full rounded-xl border border-ink/15 px-4 py-2.5 text-sm text-ink outline-none focus:border-violet-400"
-            />
-          </div>
+        <div>
+          <label className="text-sm font-medium text-ink/70" htmlFor="audience">
+            Send to
+          </label>
+          <select
+            id="audience"
+            value={groupId}
+            onChange={(e) => setGroupId(e.target.value)}
+            className="mt-1.5 w-full rounded-xl border border-ink/15 bg-white px-4 py-2.5 text-sm text-ink outline-none focus:border-violet-400"
+          >
+            <option value="">All subscribers ({subscriberCount})</option>
+            {groups.map((g) => (
+              <option key={g.id} value={g.id}>
+                {g.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
 
-          <div>
-            <label className="text-sm font-medium text-ink/70" htmlFor="previewText">
-              Preview text <span className="font-normal text-ink/40">(inbox preview snippet, optional)</span>
-            </label>
-            <input
-              id="previewText"
-              value={previewText}
-              onChange={(e) => setPreviewText(e.target.value)}
-              placeholder="A short line shown next to the subject in most inboxes…"
-              className="mt-1.5 w-full rounded-xl border border-ink/15 px-4 py-2.5 text-sm text-ink outline-none focus:border-violet-400"
-            />
-          </div>
+      <div className="mt-4">
+        <label className="text-sm font-medium text-ink/70" htmlFor="previewText">
+          Preview text <span className="font-normal text-ink/40">(inbox preview snippet, optional)</span>
+        </label>
+        <input
+          id="previewText"
+          value={previewText}
+          onChange={(e) => setPreviewText(e.target.value)}
+          placeholder="A short line shown next to the subject in most inboxes…"
+          className="mt-1.5 w-full rounded-xl border border-ink/15 px-4 py-2.5 text-sm text-ink outline-none focus:border-violet-400"
+        />
+      </div>
 
-          <div>
-            <label className="text-sm font-medium text-ink/70">Body</label>
-            <div className="mt-1.5">
-              <RichTextEditor initialContent={bodyHtml} onChange={setBodyHtml} />
+      <p className="mt-3 text-xs text-ink/40">
+        Tip: use <code className="rounded bg-ink/5 px-1 py-0.5">{"{$firstname}"}</code> anywhere in the body to
+        personalize per subscriber.
+      </p>
+
+      <div className="mt-5">
+        {showPreview ? (
+          <div className="overflow-hidden rounded-2xl border border-ink/10">
+            <div className="border-b border-ink/10 bg-ink/[0.03] px-4 py-2 text-xs text-ink/50">
+              Subject: <span className="font-medium text-ink">{subject || "(no subject)"}</span>
+              {previewText && (
+                <>
+                  {" "}
+                  &middot; Preview: <span className="font-medium text-ink">{previewText}</span>
+                </>
+              )}
             </div>
+            <iframe title="Email preview" srcDoc={previewHtml} className="h-[560px] w-full bg-[#f4f2f9]" />
           </div>
-        </div>
-      )}
+        ) : (
+          <BlockEditor blocks={blocks} onChange={setBlocks} />
+        )}
+      </div>
 
       {message && (
         <p className={`mt-4 text-sm ${message.type === "error" ? "text-red-700" : "text-green-700"}`}>
@@ -169,7 +201,7 @@ export default function NewsletterComposer({
         <button
           type="button"
           onClick={handleSendTest}
-          disabled={pending || !subject || !bodyHtml}
+          disabled={pending || !subject || blocks.length === 0}
           className="rounded-full border border-violet-300 px-5 py-2.5 text-sm font-semibold text-violet-700 hover:bg-violet-50 disabled:opacity-50"
         >
           Send test to me
@@ -196,10 +228,10 @@ export default function NewsletterComposer({
           <button
             type="button"
             onClick={handleSend}
-            disabled={pending || !subject || !bodyHtml || subscriberCount === 0}
+            disabled={pending || !subject || blocks.length === 0 || subscriberCount === 0}
             className="rounded-full bg-ink px-6 py-2.5 text-sm font-semibold text-white hover:bg-violet-900 disabled:opacity-60"
           >
-            {pending ? "Working…" : scheduleMode ? "Schedule" : `Send to ${subscriberCount}`}
+            {pending ? "Working…" : scheduleMode ? "Schedule" : "Send"}
           </button>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import { siteConfig } from "@/lib/data";
 import { renderNewsletterEmail } from "@/lib/emailTemplate";
+import { renderBlocksToHtml, type Block } from "@/lib/newsletterBlocks";
 
 // FROM_EMAIL should be on a domain verified in Resend. Until that's set up,
 // emails fall back to Resend's shared onboarding address so sending still
@@ -40,18 +41,21 @@ export async function sendContactNotification(name: string, email: string, messa
   });
 }
 
-type NewsletterInput = {
+type CampaignInput = {
   subject: string;
-  bodyHtml: string;
+  blocks: Block[];
   previewText?: string;
   scheduledAt?: string; // ISO string; if set, Resend sends it at this time instead of immediately
 };
 
-export async function sendTestEmail(to: string, input: NewsletterInput) {
+export async function sendTestEmail(to: string, input: CampaignInput) {
   const resend = getResend();
   if (!resend) return { skipped: true as const, reason: "RESEND_API_KEY not set" };
 
-  const html = renderNewsletterEmail({ bodyHtml: input.bodyHtml, previewText: input.previewText });
+  const html = renderNewsletterEmail({
+    bodyHtml: renderBlocksToHtml(input.blocks, "Friend"),
+    previewText: input.previewText,
+  });
 
   const result = await resend.emails.send({
     from: `${siteConfig.name} <${FROM_EMAIL}>`,
@@ -64,30 +68,46 @@ export async function sendTestEmail(to: string, input: NewsletterInput) {
   return { skipped: false as const, error: null };
 }
 
-export async function sendNewsletterBroadcast(recipients: string[], input: NewsletterInput) {
+export type Recipient = { email: string; subscriberId: string | null; name?: string | null };
+export type RecipientResult = { email: string; subscriberId: string | null; resendId: string | null };
+
+/**
+ * Sends one individual email per recipient (via Resend's batch API) so each
+ * can be tracked separately for open/click analytics. Personalizes
+ * {$firstname} per recipient.
+ */
+export async function sendNewsletterBatch(recipients: Recipient[], input: CampaignInput) {
   const resend = getResend();
   if (!resend) return { skipped: true as const, reason: "RESEND_API_KEY not set" };
   if (recipients.length === 0) return { skipped: true as const, reason: "No subscribers" };
 
-  const html = renderNewsletterEmail({ bodyHtml: input.bodyHtml, previewText: input.previewText });
+  const payload = recipients.map((r) => ({
+    from: `${siteConfig.name} <${FROM_EMAIL}>`,
+    to: r.email,
+    subject: input.subject,
+    html: renderNewsletterEmail({
+      bodyHtml: renderBlocksToHtml(input.blocks, r.name),
+      previewText: input.previewText,
+    }),
+    ...(input.scheduledAt ? { scheduledAt: input.scheduledAt } : {}),
+  }));
 
-  // Resend's batch send caps at 100 recipients per call; chunk if needed.
-  const chunks: string[][] = [];
-  for (let i = 0; i < recipients.length; i += 90) chunks.push(recipients.slice(i, i + 90));
+  const results: RecipientResult[] = [];
+  for (let i = 0; i < payload.length; i += 100) {
+    const chunk = payload.slice(i, i + 100);
+    const recChunk = recipients.slice(i, i + 100);
+    const res = await resend.batch.send(chunk);
 
-  const ids: string[] = [];
-  for (const chunk of chunks) {
-    const result = await resend.emails.send({
-      from: `${siteConfig.name} <${FROM_EMAIL}>`,
-      to: FROM_EMAIL,
-      bcc: chunk,
-      subject: input.subject,
-      html,
-      ...(input.scheduledAt ? { scheduledAt: input.scheduledAt } : {}),
+    if (res.error) return { skipped: false as const, error: res.error.message, results: [] as RecipientResult[] };
+
+    (res.data?.data ?? []).forEach((item, idx) => {
+      results.push({
+        email: recChunk[idx].email,
+        subscriberId: recChunk[idx].subscriberId,
+        resendId: item.id ?? null,
+      });
     });
-    if (result.error) return { skipped: false as const, error: result.error.message };
-    if (result.data?.id) ids.push(result.data.id);
   }
 
-  return { skipped: false as const, error: null, ids };
+  return { skipped: false as const, error: null, results };
 }

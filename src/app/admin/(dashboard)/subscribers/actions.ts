@@ -23,3 +23,39 @@ export async function removeSubscriber(id: string) {
   revalidatePath("/admin/subscribers");
   return { error: null };
 }
+
+export async function createGroup(formData: FormData) {
+  const name = String(formData.get("name") ?? "").trim();
+  if (!name) return { error: "Name is required." };
+
+  const supabase = await createClient();
+  const { error } = await supabase.from("subscriber_groups").insert({ name });
+  if (error) return { error: error.message };
+  revalidatePath("/admin/subscribers");
+  revalidatePath("/admin/newsletter");
+  return { error: null };
+}
+
+export async function deleteGroup(id: string) {
+  const supabase = await createClient();
+  const { error } = await supabase.from("subscriber_groups").delete().eq("id", id);
+  if (error) return { error: error.message };
+  revalidatePath("/admin/subscribers");
+  revalidatePath("/admin/newsletter");
+  return { error: null };
+}
+
+export async function setSubscriberGroup(subscriberId: string, groupId: string, inGroup: boolean) {
+  const supabase = await createClient();
+  const { error } = inGroup
+    ? await supabase.from("subscriber_group_members").insert({ subscriber_id: subscriberId, group_id: groupId })
+    : await supabase
+        .from("subscriber_group_members")
+        .delete()
+        .eq("subscriber_id", subscriberId)
+        .eq("group_id", groupId);
+
+  if (error) return { error: error.message };
+  revalidatePath("/admin/subscribers");
+  return { error: null };
+}
