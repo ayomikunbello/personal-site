@@ -2,7 +2,8 @@
 
 import { useTransition } from "react";
 import Link from "next/link";
-import { deleteDraft } from "@/app/admin/(dashboard)/newsletter/actions";
+import { useRouter } from "next/navigation";
+import { deleteDraft, duplicateCampaign } from "@/app/admin/(dashboard)/newsletter/actions";
 
 type Send = {
   id: string;
@@ -34,12 +35,24 @@ export default function NewsletterHistory({
   items: Send[];
   statsByCampaign: Record<string, CampaignStat>;
 }) {
+  const router = useRouter();
   const [pending, startTransition] = useTransition();
 
   function handleDelete(id: string) {
     if (!confirm("Delete this draft?")) return;
     startTransition(async () => {
       await deleteDraft(id);
+    });
+  }
+
+  function handleDuplicate(id: string) {
+    startTransition(async () => {
+      const res = await duplicateCampaign(id);
+      if (res.error) {
+        alert(res.error);
+      } else if (res.id) {
+        router.push(`/admin/newsletter?draft=${res.id}`);
+      }
     });
   }
 
@@ -65,22 +78,30 @@ export default function NewsletterHistory({
               </div>
               <div className="flex shrink-0 gap-2">
                 {s.status === "draft" && (
-                  <>
-                    <Link
-                      href={`/admin/newsletter?draft=${s.id}`}
-                      className="rounded-full border border-ink/15 px-3 py-1.5 text-xs font-semibold text-ink hover:bg-ink/5"
-                    >
-                      Edit
-                    </Link>
-                    <button
-                      type="button"
-                      disabled={pending}
-                      onClick={() => handleDelete(s.id)}
-                      className="rounded-full border border-red-200 px-3 py-1.5 text-xs font-semibold text-red-700 hover:bg-red-50"
-                    >
-                      Delete
-                    </button>
-                  </>
+                  <Link
+                    href={`/admin/newsletter?draft=${s.id}`}
+                    className="rounded-full border border-ink/15 px-3 py-1.5 text-xs font-semibold text-ink hover:bg-ink/5"
+                  >
+                    Edit
+                  </Link>
+                )}
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={() => handleDuplicate(s.id)}
+                  className="rounded-full border border-violet-200 px-3 py-1.5 text-xs font-semibold text-violet-700 hover:bg-violet-50"
+                >
+                  Duplicate
+                </button>
+                {s.status === "draft" && (
+                  <button
+                    type="button"
+                    disabled={pending}
+                    onClick={() => handleDelete(s.id)}
+                    className="rounded-full border border-red-200 px-3 py-1.5 text-xs font-semibold text-red-700 hover:bg-red-50"
+                  >
+                    Delete
+                  </button>
                 )}
               </div>
             </div>

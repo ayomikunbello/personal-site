@@ -146,3 +146,33 @@ export async function deleteDraft(id: string) {
   revalidatePath("/admin/newsletter");
   return { error: null };
 }
+
+/** Copies any past campaign (draft, scheduled, or sent) into a fresh draft you can edit. */
+export async function duplicateCampaign(id: string) {
+  const supabase = await createClient();
+  const { data: original, error: fetchError } = await supabase
+    .from("newsletter_sends")
+    .select("subject, preview_text, body_blocks, group_id")
+    .eq("id", id)
+    .single();
+
+  if (fetchError || !original) return { error: fetchError?.message ?? "Campaign not found.", id: null };
+
+  const { data: copy, error: insertError } = await supabase
+    .from("newsletter_sends")
+    .insert({
+      subject: `Copy of ${original.subject}`,
+      preview_text: original.preview_text,
+      body_blocks: original.body_blocks,
+      body_html: renderBlocksToHtml((original.body_blocks as Block[]) ?? []),
+      group_id: original.group_id,
+      status: "draft",
+    })
+    .select("id")
+    .single();
+
+  if (insertError) return { error: insertError.message, id: null };
+
+  revalidatePath("/admin/newsletter");
+  return { error: null, id: copy.id as string };
+}
