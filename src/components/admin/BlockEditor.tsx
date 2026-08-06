@@ -210,22 +210,32 @@ function BlockCanvasItem({
         selected ? "border-violet-400 bg-violet-50/40" : "border-transparent hover:border-ink/10"
       }`}
     >
-      {selected && (
-        <div className="absolute -top-4 right-2 flex items-center gap-1 rounded-lg border border-ink/10 bg-white p-1 shadow-sm">
-          <button type="button" disabled={isFirst} onClick={(e) => { e.stopPropagation(); onMove(-1); }} className="flex h-6 w-6 items-center justify-center rounded text-xs text-ink/60 hover:bg-ink/5 disabled:opacity-30">
-            ↑
-          </button>
-          <button type="button" disabled={isLast} onClick={(e) => { e.stopPropagation(); onMove(1); }} className="flex h-6 w-6 items-center justify-center rounded text-xs text-ink/60 hover:bg-ink/5 disabled:opacity-30">
-            ↓
-          </button>
-          <button type="button" onClick={(e) => { e.stopPropagation(); onDuplicate(); }} className="flex h-6 w-6 items-center justify-center rounded text-xs text-ink/60 hover:bg-ink/5">
-            ⧉
-          </button>
-          <button type="button" onClick={(e) => { e.stopPropagation(); onDelete(); }} className="flex h-6 w-6 items-center justify-center rounded text-xs text-red-600 hover:bg-red-50">
-            ✕
-          </button>
-        </div>
-      )}
+      <div
+        className={`absolute -top-4 right-2 flex items-center gap-1 rounded-lg border border-ink/10 bg-white p-1 shadow-sm transition-opacity ${
+          selected ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+        }`}
+      >
+        <button type="button" disabled={isFirst} onClick={(e) => { e.stopPropagation(); onMove(-1); }} aria-label="Move up" className="flex h-6 w-6 items-center justify-center rounded text-xs text-ink/60 hover:bg-ink/5 disabled:opacity-30">
+          ↑
+        </button>
+        <button type="button" disabled={isLast} onClick={(e) => { e.stopPropagation(); onMove(1); }} aria-label="Move down" className="flex h-6 w-6 items-center justify-center rounded text-xs text-ink/60 hover:bg-ink/5 disabled:opacity-30">
+          ↓
+        </button>
+        <button type="button" onClick={(e) => { e.stopPropagation(); onDuplicate(); }} aria-label="Duplicate" className="flex h-6 w-6 items-center justify-center rounded text-xs text-ink/60 hover:bg-ink/5">
+          ⧉
+        </button>
+        <button type="button" onClick={(e) => { e.stopPropagation(); onDelete(); }} aria-label="Delete" className="flex h-6 w-6 items-center justify-center rounded text-xs text-red-600 hover:bg-red-50">
+          ✕
+        </button>
+      </div>
+
+      <span
+        className={`pointer-events-none absolute -left-2 -top-2 rounded-full bg-ink px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-white transition-opacity ${
+          selected ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+        }`}
+      >
+        {block.type}
+      </span>
 
       {block.type === "paragraph" ? (
         <div onClick={(e) => e.stopPropagation()} style={{ textAlign: block.align }}>
@@ -339,56 +349,58 @@ export default function BlockEditor({
   const selectedBlock = blocks.find((b) => b.id === selectedId) ?? null;
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[9rem_1fr_16rem]">
-      {/* Palette */}
-      <div className="grid grid-cols-3 gap-2 lg:grid-cols-1">
+    <div>
+      {/* Palette — horizontal bar so the canvas below gets full width */}
+      <div className="flex flex-wrap gap-2 rounded-2xl border border-ink/10 bg-white p-2">
         {PALETTE.map((p) => (
           <button
             key={p.type}
             type="button"
             onClick={() => addBlock(p.type)}
-            className="flex flex-col items-center gap-1 rounded-xl border border-ink/10 bg-white py-3 text-center text-[11px] font-medium text-ink/60 hover:border-violet-300 hover:text-violet-700"
+            className="flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-medium text-ink/60 hover:bg-violet-50 hover:text-violet-700"
           >
-            <span className="text-base">{p.icon}</span>
+            <span className="text-sm">{p.icon}</span>
             {p.label}
           </button>
         ))}
       </div>
 
-      {/* Canvas */}
-      <div className="min-w-0 space-y-2 rounded-2xl border border-ink/10 bg-[#f4f2f9] p-4">
-        {blocks.length === 0 && (
-          <p className="py-12 text-center text-sm text-ink/40">
-            Add a block from the left to start building your email.
-          </p>
-        )}
-        {blocks.map((block, i) => (
-          <BlockCanvasItem
-            key={block.id}
-            block={block}
-            selected={block.id === selectedId}
-            onSelect={() => setSelectedId(block.id)}
-            onUpdate={(b) => updateBlock(block.id, b)}
-            onDelete={() => deleteBlock(block.id)}
-            onDuplicate={() => duplicateBlock(block.id)}
-            onMove={(dir) => moveBlock(block.id, dir)}
-            isFirst={i === 0}
-            isLast={i === blocks.length - 1}
-          />
-        ))}
-      </div>
+      <div className="mt-4 grid gap-4 xl:grid-cols-[1fr_15rem]">
+        {/* Canvas */}
+        <div className="min-w-0 space-y-2 rounded-2xl border border-ink/10 bg-[#f4f2f9] p-5">
+          {blocks.length === 0 && (
+            <p className="py-12 text-center text-sm text-ink/40">
+              Add a block from above to start building your email.
+            </p>
+          )}
+          {blocks.map((block, i) => (
+            <BlockCanvasItem
+              key={block.id}
+              block={block}
+              selected={block.id === selectedId}
+              onSelect={() => setSelectedId(block.id)}
+              onUpdate={(b) => updateBlock(block.id, b)}
+              onDelete={() => deleteBlock(block.id)}
+              onDuplicate={() => duplicateBlock(block.id)}
+              onMove={(dir) => moveBlock(block.id, dir)}
+              isFirst={i === 0}
+              isLast={i === blocks.length - 1}
+            />
+          ))}
+        </div>
 
-      {/* Settings */}
-      <div className="rounded-2xl border border-ink/10 bg-white p-4">
-        <h3 className="text-sm font-semibold text-ink">
+        {/* Settings */}
+        <div className="h-fit rounded-2xl border border-ink/10 bg-white p-4 xl:sticky xl:top-24">
+          <h3 className="text-sm font-semibold text-ink">
           {selectedBlock ? `${selectedBlock.type[0].toUpperCase()}${selectedBlock.type.slice(1)} settings` : "Block settings"}
         </h3>
-        <div className="mt-4">
-          {selectedBlock ? (
-            <SettingsPanel block={selectedBlock} onUpdate={(b) => updateBlock(selectedBlock.id, b)} />
-          ) : (
-            <p className="text-xs text-ink/40">Select a block to edit its settings.</p>
-          )}
+          <div className="mt-4">
+            {selectedBlock ? (
+              <SettingsPanel block={selectedBlock} onUpdate={(b) => updateBlock(selectedBlock.id, b)} />
+            ) : (
+              <p className="text-xs text-ink/40">Select a block to edit its settings.</p>
+            )}
+          </div>
         </div>
       </div>
     </div>

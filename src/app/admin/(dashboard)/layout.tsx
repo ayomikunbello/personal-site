@@ -19,7 +19,7 @@ export default async function AdminDashboardLayout({
 
   return (
     <div className="min-h-[calc(100vh-4rem)] bg-paper">
-      <div className="mx-auto flex max-w-6xl gap-8 px-6 py-10">
+      <div className="mx-auto flex max-w-[100rem] gap-8 px-6 py-10">
         <aside className="hidden w-56 shrink-0 sm:block">
           <div className="sticky top-24 rounded-3xl border border-ink/10 bg-white p-4">
             <div className="mb-2 flex items-center gap-2 px-2 py-2">
