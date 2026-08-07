@@ -1,9 +1,13 @@
 import { siteConfig } from "@/lib/data";
 
+const HEADER_PURPLE = "#b19cea";
+const BODY_CREAM = "#f2efe9";
+
 /**
- * Wraps rich-text HTML (from the newsletter editor) in an email-safe
- * template: inline styles only, a hidden preheader for the inbox preview
- * line, and a simple branded footer.
+ * Wraps rich-text HTML (from the newsletter editor, or a transactional
+ * email like the welcome message) in an email-safe template: a purple
+ * header band with the logo, a cream body, inline styles only, and a
+ * hidden preheader for the inbox preview line.
  */
 export function renderNewsletterEmail({
   bodyHtml,
@@ -22,30 +26,32 @@ export function renderNewsletterEmail({
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body style="margin:0;padding:0;background-color:#f4f2f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
+  <body style="margin:0;padding:0;background-color:${BODY_CREAM};font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
     ${
       previewText
         ? `<div style="display:none;max-height:0;overflow:hidden;opacity:0;">${escapeHtml(previewText)}</div>`
         : ""
     }
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f2f9;padding:32px 16px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:${BODY_CREAM};">
       <tr>
         <td align="center">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background-color:#ffffff;border-radius:20px;overflow:hidden;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;">
             <tr>
-              <td style="padding:32px 32px 8px 32px;text-align:center;">
-                <img src="${logoUrl}" alt="${escapeHtml(siteConfig.name)}" width="120" style="display:inline-block;height:auto;max-width:120px;" />
+              <td style="background-color:${HEADER_PURPLE};padding:36px 32px;">
+                <img src="${logoUrl}" alt="${escapeHtml(siteConfig.name)}" width="150" style="display:inline-block;height:auto;max-width:150px;" />
               </td>
             </tr>
             <tr>
-              <td style="padding:20px 32px 32px 32px;font-size:15px;line-height:1.7;color:#3f3a4a;">
+              <td style="background-color:${BODY_CREAM};padding:32px;font-size:15px;line-height:1.7;color:#181121;">
                 ${bodyHtml}
               </td>
             </tr>
             <tr>
-              <td style="padding:20px 32px;border-top:1px solid #eee;font-size:12px;color:#9992a8;">
-                © ${year} ${siteConfig.name}. You're receiving this because you subscribed at
-                <a href="https://ayo-bello.com" style="color:#7c3aed;">ayo-bello.com</a>.
+              <td style="background-color:${BODY_CREAM};padding:0 32px 32px 32px;font-size:12px;color:#8b8496;">
+                <div style="border-top:1px solid #e3ded4;padding-top:20px;">
+                  © ${year} ${siteConfig.name}. You're receiving this because you subscribed at
+                  <a href="https://ayo-bello.com" style="color:#7c3aed;">ayo-bello.com</a>.
+                </div>
               </td>
             </tr>
           </table>

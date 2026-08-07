@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 import { siteConfig } from "@/lib/data";
 import { renderNewsletterEmail } from "@/lib/emailTemplate";
-import { renderBlocksToHtml, type Block } from "@/lib/newsletterBlocks";
+import { renderBlocksToHtml, applyMergeTags, type Block } from "@/lib/newsletterBlocks";
 
 // FROM_EMAIL should be on a domain verified in Resend. Until that's set up,
 // emails fall back to Resend's shared onboarding address so sending still
@@ -14,17 +14,32 @@ function getResend() {
   return new Resend(key);
 }
 
+const WELCOME_EMAIL_HTML = `
+  <p style="margin:0 0 20px;">Hey {$firstname},</p>
+  <h2 style="margin:0 0 16px;font-weight:700;font-size:24px;color:#181121;">Welcome aboard 🚀</h2>
+  <p style="margin:0 0 16px;">Thank you for subscribing to my newsletter!</p>
+  <p style="margin:0 0 16px;">Once a month, through this medium, I try to share a few things I've learnt in my doctoral journey.</p>
+  <p style="margin:0 0 16px;">Also, I am happy to help you find the best way to study abroad, and/or guide you in successfully publishing your research paper(s), therefore don't hesitate to reach out.</p>
+  <p style="margin:0 0 16px;">I'm here to help you 💜</p>
+  <p style="margin:0 0 24px;"><strong>Best,</strong><br /><strong>Ayo.</strong></p>
+  <div>
+    <a href="https://ayo-bello.com" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#181121;color:#ffffff;padding:12px 24px;border-radius:9999px;text-decoration:none;font-weight:600;font-size:14px;">Visit my website</a>
+  </div>
+`;
+
 export async function sendWelcomeEmail(to: string, name?: string) {
   const resend = getResend();
   if (!resend) return { skipped: true, reason: "RESEND_API_KEY not set" };
 
-  const greeting = name ? `Hi ${name},` : "Hi there,";
+  const html = renderNewsletterEmail({
+    bodyHtml: applyMergeTags(WELCOME_EMAIL_HTML, name),
+  });
 
   return resend.emails.send({
     from: `${siteConfig.name} <${FROM_EMAIL}>`,
     to,
     subject: `Welcome to my newsletter`,
-    text: `${greeting}\n\nThanks for subscribing! Once a month I'll send you an email with what I'm up to and a few things I've learnt.\n\n— ${siteConfig.name}`,
+    html,
   });
 }
 
