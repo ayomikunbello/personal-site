@@ -42,7 +42,7 @@ export const about = {
   heading: "About me",
   image: "/images/about.jpg",
   paragraphs: [
-    `I am a research scientist with over 5 years of research experience in the field of petroleum engineering. My research has been focused on developing and exploring "green novel" methods to improve oil recovery. Recently, my interest expanded to CO2 sequestration, where I investigate the application of these methods and formulate chemicals for the dual purpose of CO2 storage and enhanced oil recovery. During these years, I also got interested in entrepreneurship, and in 2022, I co-founded a startup, Eco Energy LLC, registered as a legal entity in Moscow, and we specialize in the production of smart biogas containers for the recycling of organic wastes.`,
+    `I am a research scientist with over 5 years of research experience in the field of petroleum engineering. My research has been focused on developing and exploring "green novel" methods to improve oil recovery. Recently, my interest expanded to CO₂ sequestration, where I investigate the application of these methods and formulate chemicals for the dual purpose of CO₂ storage and enhanced oil recovery. During these years, I also got interested in entrepreneurship, and in 2022, I co-founded a startup, Eco Energy LLC, registered as a legal entity in Moscow, and we specialize in the production of smart biogas containers for the recycling of organic wastes.`,
     `Since mid-high school, I have not paid a dime for tuition, thus I have received academic funding worth over $425,000 through fellowships, scholarships, and awards, resulting in the publication of 9 journal publications and 7 conference proceedings. I was a recipient of the Nigeria-Russia Bilateral Education Agreement scholarship in 2015, pursuing my bachelor's degree in Petroleum Engineering at Kazan National Research Technological University. During this time, I was the president of the SPE student chapter in my university. In 2020, I received the special state award of the Tatarstan Republic for outstanding abilities in educational and scientific activities in the republic; after which I began my Masters at Skoltech.`,
     `In late 2022, I continued in the same path for my PhD at Skoltech. Since then, I have published papers in top Q1/Q2 journals and my research works have been presented at top-level conferences in the UK, the US, South America, the Middle East, and Europe. In 2023, I won the scholarship award of the President of the Russian Federation in priority areas, which is awarded for exceptional achievements related to the national strategic areas of development. Having completed all course requirements, passed the qualifying exams (Feb. 2024), and my doctoral research proposal (Dec. 2023), I successfully defended my PhD the 9th of December, 2024.`,
     `In addition to my academic pursuits, I joined Japaguys in early 2023, leveraging my extensive experience in college/grad school applications and securing scholarships to help students access information about admissions and scholarships abroad.`,
@@ -56,7 +56,7 @@ export const researchInterests = {
   image: "/images/research.jpg",
   paragraphs: [
     `My research interests include microfluidics, interfacial science, and fluid mechanics, with a particular focus on multiphase flow in porous media. I am especially interested in how these areas apply to evaporation phenomena and enhanced oil recovery.`,
-    `Previously, I worked on the design and optimization of binary surfactant systems capable of generating stable foams in depleted oil reservoirs. This work aimed to improve oil recovery while simultaneously enabling CO2 sequestration.`,
+    `Previously, I worked on the design and optimization of binary surfactant systems capable of generating stable foams in depleted oil reservoirs. This work aimed to improve oil recovery while simultaneously enabling CO₂ sequestration.`,
     `Currently, I am investigating the evaporation dynamics of surfactant solutions within porous media using microfluidic platforms. My focus is on understanding how interfacial tension and wettability influence evaporation rates and trigger front instabilities at the pore scale. I am also exploring the evaporation behavior of surfactant-laden droplets suspended in air, specifically, how contact angle hysteresis and Marangoni flows affect droplet lifetime and final deposition patterns.`,
     `If you're interested in this research or would like to explore collaboration opportunities, feel free to contact me via email.`,
   ],
@@ -109,7 +109,7 @@ export const highlights = [
   },
   {
     date: "12 October, 2022",
-    text: "Numerical Sensitivity Analysis of CO Mineralization Trapping Mechanisms in a Deep Saline Aquifer by Ayomikun Bello, Desmond Dorhjie, Anastasia Ivanova, Alexey Cheremisin",
+    text: "Numerical Sensitivity Analysis of CO₂ Mineralization Trapping Mechanisms in a Deep Saline Aquifer by Ayomikun Bello, Desmond Dorhjie, Anastasia Ivanova, Alexey Cheremisin",
     href: "https://www.linkedin.com/posts/chemical-engineering-science-5649a4243_numerical-sensitivity-analysis-of-co2-mineralization-activity-7116374224033726464-FgC9",
     image: "/images/news-ces-linkedin.png",
   },
@@ -118,7 +118,7 @@ export const highlights = [
 // Full publication list, scraped verbatim from ayo-bello.com/portfolio.
 export const journalPublications = [
   {
-    text: "Anastasia Ivanova, Ayomikun Bello, Alexander Rodionov, Yuanhao Chang, Hui Gao, Alexey Cheremisin (2026). Molecular Origins of Surfactant Synergy: Integrated Experiments and Simulations Reveal Interfacial Mechanisms for Enhanced CO2 Foam Performance. Journal of Molecular Liquids",
+    text: "Anastasia Ivanova, Ayomikun Bello, Alexander Rodionov, Yuanhao Chang, Hui Gao, Alexey Cheremisin (2026). Molecular Origins of Surfactant Synergy: Integrated Experiments and Simulations Reveal Interfacial Mechanisms for Enhanced CO₂ Foam Performance. Journal of Molecular Liquids",
     href: "https://doi.org/10.1016/j.molliq.2026.129712",
   },
   {
@@ -134,7 +134,7 @@ export const journalPublications = [
     href: "https://doi.org/10.1016/j.advwatres.2025.105123",
   },
   {
-    text: "Ayomikun Bello, Anastasia Ivanova, Denis Bakulin, Kirill Maerle, Denis Davydov, Artem Penigin, Alexey Cheremisin (2025). Enhanced Carbon Utilization and Storage: An Application of Nonionic-based Binary Surfactant CO2 Foam. Heliyon",
+    text: "Ayomikun Bello, Anastasia Ivanova, Denis Bakulin, Kirill Maerle, Denis Davydov, Artem Penigin, Alexey Cheremisin (2025). Enhanced Carbon Utilization and Storage: An Application of Nonionic-based Binary Surfactant CO₂ Foam. Heliyon",
     href: "https://doi.org/10.1016/j.heliyon.2025.e42561",
   },
   {
@@ -146,7 +146,7 @@ export const journalPublications = [
     href: "https://doi.org/10.1016/j.rser.2024.115167",
   },
   {
-    text: "Ayomikun Bello, Desmond Batsa Dorhjie, Anastasia Ivanova, Alexey Cheremisin (2024). A Numerical Feasibility Study of CO2 Foam for Carbon Utilization and Storage in a Depleted, High Salinity, Carbonate Oil Reservoir. Scientific Reports",
+    text: "Ayomikun Bello, Desmond Batsa Dorhjie, Anastasia Ivanova, Alexey Cheremisin (2024). A Numerical Feasibility Study of CO₂ Foam for Carbon Utilization and Storage in a Depleted, High Salinity, Carbonate Oil Reservoir. Scientific Reports",
     href: "https://doi.org/10.1038/s41598-024-70122-1",
   },
   {
@@ -166,7 +166,7 @@ export const journalPublications = [
     href: "https://doi.org/10.1016/j.colsurfa.2024.133396",
   },
   {
-    text: "Ayomikun Bello, Desmond Batsa Dorhjie, Anastasia Ivanova, Alexey Cheremisin (2023). Numerical Sensitivity Analysis of CO2 Mineralization Trapping Mechanisms in a Deep Saline Aquifer. Journal of Chemical Engineering Science",
+    text: "Ayomikun Bello, Desmond Batsa Dorhjie, Anastasia Ivanova, Alexey Cheremisin (2023). Numerical Sensitivity Analysis of CO₂ Mineralization Trapping Mechanisms in a Deep Saline Aquifer. Journal of Chemical Engineering Science",
     href: "https://doi.org/10.1016/j.ces.2023.119335",
   },
   {
@@ -174,7 +174,7 @@ export const journalPublications = [
     href: "https://doi.org/10.3390/en16135120",
   },
   {
-    text: "Ayomikun Bello, Anastasia Ivanova, Alexey Cheremisin (2023). A Comprehensive Review of the Role of CO2 Foam EOR in the Reduction of Carbon Footprint in the Petroleum Industry. Energies",
+    text: "Ayomikun Bello, Anastasia Ivanova, Alexey Cheremisin (2023). A Comprehensive Review of the Role of CO₂ Foam EOR in the Reduction of Carbon Footprint in the Petroleum Industry. Energies",
     href: "https://doi.org/10.3390/en16031167",
   },
   {
@@ -182,7 +182,7 @@ export const journalPublications = [
     href: "https://doi.org/10.3390/en16020972",
   },
   {
-    text: "Ayomikun Bello, Anastasia Ivanova, Alexey Cheremisin (2022). Enhancing N2 and CO2 Foam Stability by Surfactants and Nanoparticles at High Temperature and Various Salinities. Journal of Petroleum Science and Engineering",
+    text: "Ayomikun Bello, Anastasia Ivanova, Alexey Cheremisin (2022). Enhancing N2 and CO₂ Foam Stability by Surfactants and Nanoparticles at High Temperature and Various Salinities. Journal of Petroleum Science and Engineering",
     href: "https://doi.org/10.1016/j.petrol.2022.110720",
   },
   {
@@ -197,15 +197,15 @@ export const journalPublications = [
 
 export const conferenceProceedings = [
   {
-    text: "Ayomikun Bello (2025). A Numerical Study of CO2 Foams for Carbon Utilization and Storage. World CCUS Conference 2025, Bergen, Norway, 1 - 4 September, 2025.",
+    text: "Ayomikun Bello (2025). A Numerical Study of CO₂ Foams for Carbon Utilization and Storage. World CCUS Conference 2025, Bergen, Norway, 1 - 4 September, 2025.",
     href: "https://doi.org/10.3997/2214-4609.202522128",
   },
   {
-    text: "Ayomikun Bello, Desmond B. Dorhjie, Anastasia Ivanova, Alexey Cheremisin (2025). Experimental and Numerical Simulation of Binary Surfactant Foam for the Co-Optimization of the Methods of Oil Recovery and CO2 Storage. SPE/AAPG/SEG Unconventional Resources Technology Conference, Houston, Texas, USA, 9 - 11 June, 2025.",
+    text: "Ayomikun Bello, Desmond B. Dorhjie, Anastasia Ivanova, Alexey Cheremisin (2025). Experimental and Numerical Simulation of Binary Surfactant Foam for the Co-Optimization of the Methods of Oil Recovery and CO₂ Storage. SPE/AAPG/SEG Unconventional Resources Technology Conference, Houston, Texas, USA, 9 - 11 June, 2025.",
     href: "https://doi.org/10.15530/urtec-2025-4208589",
   },
   {
-    text: "Ayomikun Bello, Desmond B. Dorhjie, Anastasia Ivanova, Alexey Cheremisin (2025). Experimental and Numerical Simulation of Foam for Co-optimizing the Methods of Oil Recovery and CO2 Storage. 86th EAGE Annual Conference & Exhibition, Toulouse, France, 2 - 5 June, 2025.",
+    text: "Ayomikun Bello, Desmond B. Dorhjie, Anastasia Ivanova, Alexey Cheremisin (2025). Experimental and Numerical Simulation of Foam for Co-optimizing the Methods of Oil Recovery and CO₂ Storage. 86th EAGE Annual Conference & Exhibition, Toulouse, France, 2 - 5 June, 2025.",
     href: "https://doi.org/10.3997/2214-4609.202510014",
   },
   {
@@ -213,11 +213,11 @@ export const conferenceProceedings = [
     href: "https://doi.org/10.2118/222085-MS",
   },
   {
-    text: "Ayomikun Bello, Anastasia Ivanova, Desmond Batsa Dorhjie, Alexey Cheremisin (2024). Numerical Analysis of Foam-Assisted and Continuous CO2 Injection for Utilization and Storage in an Oil Reservoir. Paper presented at the Fifth EAGE Global Energy Transition Conference & Exhibition, Rotterdam, Netherlands, 4 - 7 November, 2024.",
+    text: "Ayomikun Bello, Anastasia Ivanova, Desmond Batsa Dorhjie, Alexey Cheremisin (2024). Numerical Analysis of Foam-Assisted and Continuous CO₂ Injection for Utilization and Storage in an Oil Reservoir. Paper presented at the Fifth EAGE Global Energy Transition Conference & Exhibition, Rotterdam, Netherlands, 4 - 7 November, 2024.",
     href: "https://doi.org/10.3997/2214-4609.202421010",
   },
   {
-    text: "Ayomikun Bello, Anastasia Ivanova, Denis Bakulin, Alexey Cheremisin (2024). Mechanistic Study of the Interactions between Oil and CO2 Foam Generated with Binary Surfactants. Paper presented at the 85th EAGE Annual Conference & Exhibition, Oslo, Norway, 10 - 13 June, 2024.",
+    text: "Ayomikun Bello, Anastasia Ivanova, Denis Bakulin, Alexey Cheremisin (2024). Mechanistic Study of the Interactions between Oil and CO₂ Foam Generated with Binary Surfactants. Paper presented at the 85th EAGE Annual Conference & Exhibition, Oslo, Norway, 10 - 13 June, 2024.",
     href: "https://doi.org/10.3997/2214-4609.202410233",
   },
   {
@@ -237,7 +237,7 @@ export const conferenceProceedings = [
     href: "https://doi.org/10.2118/217481-STU",
   },
   {
-    text: "Ayomikun Bello, Desmond Batsa Dorhjie, Anastasia Ivanova, Alexey Cheremisin (2023). A Numerical Study of the Influence of Rock Mineralization on CO2 Storage. Paper presented at Gas & Oil Technology Showcase and Conference, Dubai, 13 – 15 March, 2023.",
+    text: "Ayomikun Bello, Desmond Batsa Dorhjie, Anastasia Ivanova, Alexey Cheremisin (2023). A Numerical Study of the Influence of Rock Mineralization on CO₂ Storage. Paper presented at Gas & Oil Technology Showcase and Conference, Dubai, 13 – 15 March, 2023.",
     href: "https://doi.org/10.2118/214045-MS",
   },
   {
@@ -260,7 +260,7 @@ export const conferenceProceedings = [
 
 export const researchProjects = [
   "Interfacial properties and their role in evaporation dynamics in porous media",
-  "Design and Development of Binary surfactant systems for combined purposes of EOR and CO2 storage",
+  "Design and Development of Binary surfactant systems for combined purposes of EOR and CO₂ storage",
   "Nanofoam Design for Enhanced Oil Recovery in Orenburg oilfield",
   "Microfluidic Study of the Influence of Nanofluids in Improving Flow-back during Hydraulic Fracturing",
   "Numerical Simulation of Nanofoam Flooding as an Optimization Technique for Gas EOR",
@@ -274,7 +274,7 @@ export const researchProjects = [
 export const phdDefense = {
   heading: "Ayomikun Bello's PhD Defense",
   topic:
-    "Co-optimization of the methods of oil recovery and CO2 storage using nonionic-based binary surfactant foams",
+    "Co-optimization of the methods of oil recovery and CO₂ storage using nonionic-based binary surfactant foams",
   day: "Monday",
   date: "December 9, 2024",
   time: "15:00",

@@ -21,7 +21,7 @@ export default async function PortfolioPage() {
         <h1 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Portfolio</h1>
 
         <div className="mt-8">
-          <AccordionSection title="Journal Publications" count={journalPublications.length} defaultOpen>
+          <AccordionSection title="Journal Publications" count={journalPublications.length}>
             <ul className="space-y-5">
               {journalPublications.map((pub) => (
                 <li key={pub.id} className="text-[15px] leading-relaxed text-ink/70">

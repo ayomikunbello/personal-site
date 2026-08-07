@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import AboutParagraph from "@/components/AboutParagraph";
 import { about, siteConfig } from "@/lib/data";
 
 export default function About({ paragraphs }: { paragraphs: string[] }) {
@@ -29,7 +30,7 @@ export default function About({ paragraphs }: { paragraphs: string[] }) {
             {about.heading}
           </h2>
           <div className="mt-8 text-justify text-[15px] leading-relaxed text-ink/70 sm:text-base">
-            <p>{firstParagraph}</p>
+            <AboutParagraph text={firstParagraph} />
 
             <div
               className={`grid transition-[grid-template-rows] duration-500 ease-in-out ${
@@ -39,9 +40,7 @@ export default function About({ paragraphs }: { paragraphs: string[] }) {
               <div className="space-y-5 overflow-hidden">
                 <div className="pt-5">
                   {restParagraphs.map((paragraph, i) => (
-                    <p key={i} className="mb-5 last:mb-0">
-                      {paragraph}
-                    </p>
+                    <AboutParagraph key={i} text={paragraph} className="mb-5 last:mb-0" />
                   ))}
                 </div>
               </div>
