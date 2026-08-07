@@ -19,11 +19,6 @@ export default function Footer() {
                 />
               </span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/50">
-              {siteConfig.role} at {siteConfig.institution}, {siteConfig.location}.
-              Researching microfluidics, interfacial science, and enhanced oil
-              recovery.
-            </p>
           </div>
 
           <div>
