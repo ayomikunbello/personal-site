@@ -6,6 +6,7 @@ import { logout } from "@/app/admin/actions";
 
 const navItems = [
   { label: "Overview", href: "/admin" },
+  { label: "Analytics", href: "/admin/analytics" },
   { label: "Page content", href: "/admin/content" },
   { label: "Publications", href: "/admin/publications" },
   { label: "Featured news", href: "/admin/highlights" },
